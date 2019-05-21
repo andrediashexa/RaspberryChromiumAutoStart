@@ -1,0 +1,79 @@
+#!/bin/bash
+
+clear
+
+sleep 2s
+
+echo "Digite o link"
+
+
+sleep 1s
+
+read dashboard
+
+if [ -f "/bin/chromium-autostart" ]
+then
+	cat /bin/chromium-autostart
+	echo
+
+	read -p "The file /bin/chromium-autostart already exists, delete? (Y/N)" -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		if [ -f "/bin/chromium-autostart.tmp" ]
+		then
+			rm /bin/chromium-autostart.tmp
+		fi
+    	mv /bin/chromium-autostart /bin/chromium-autostart.tmp
+      echo "File moved to /bin/chromium-autostart.tmp"
+	fi
+
+fi
+
+echo "chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen '$dashboard'" > /bin/chromium-autostart
+chmod a+x /bin/chromium-autostart
+
+
+if [ -f "/home/pi/.config/lxsession/LXDE-pi/autostart" ]
+then
+	cat /home/pi/.config/lxsession/LXDE-pi/autostart
+	echo
+
+	read -p "The file /home/pi/.config/lxsession/LXDE-pi/autostart already exists, delete? (Y/N)" -n 1 -r
+	echo
+	if [[ $REPLY =~ ^[Yy]$ ]]
+	then
+		if [ -f "/home/pi/.config/lxsession/LXDE-pi/autostart.tmp" ]
+		then
+			rm /home/pi/.config/lxsession/LXDE-pi/autostart.tmp
+		fi
+    	mv /home/pi/.config/lxsession/LXDE-pi/autostart /home/pi/.config/lxsession/LXDE-pi/autostart.tmp
+      echo "File moved to /home/pi/.config/lxsession/LXDE-pi/autostart.tmp"
+	fi
+
+fi
+
+
+echo "@lxpanel --profile LXDE-pi
+@pcmanfm --desktop --profile LXDE-pi
+@xscreensaver -no-splash
+@point-rpi
+
+chromium-autostart" > /home/pi/.config/lxsession/LXDE-pi/autostart
+chmod a+x /home/pi/.config/lxsession/LXDE-pi/autostart
+
+
+
+echo "======
+/bin/chromium-autostart
+======"
+
+more /bin/chromium-autostart
+
+sleep 1s
+
+echo "======
+/home/pi/.config/lxsession/LXDE-pi/autostart
+======"
+
+more /home/pi/.config/lxsession/LXDE-pi/autostart
