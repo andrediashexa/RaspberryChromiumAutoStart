@@ -30,7 +30,7 @@ then
 
 fi
 
-echo "chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen '$dashboard'" > /bin/chromium-autostart
+echo "chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen --app=$dashboard" > /bin/chromium-autostart
 chmod a+x /bin/chromium-autostart
 
 
