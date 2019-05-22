@@ -1,12 +1,12 @@
-RaspberryChromiumAutoStart
+<h1>RaspberryChromiumAutoStart</h1>
 
-Tutorial to use the script:
+<u>Tutorial to use the script:</u>
 
 <q>apt-get install git -y <br>
 git clone https://github.com/andrediashexa/RaspberryChromiumAutoStart.git <br>
 cd RaspberryChromiumAutoStart <br>
-chmod a+x RaspberryChromiumAutoStart <br>
-./RaspberryChromiumAutoStart</q>
+chmod a+x raspberrychromiumautostart <br>
+./raspberrychromiumautostart</q>
 
 After running this commands, paste the URL that you want to Chromium open when it autostart, then reboot your raspberry to test.
 
