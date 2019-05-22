@@ -1,6 +1,6 @@
 <h1>RaspberryChromiumAutoStart</h1>
 
-<u>Tutorial to use the script:</u>
+Tutorial to use the script:
 
 <q>apt-get install git -y <br>
 git clone https://github.com/andrediashexa/RaspberryChromiumAutoStart.git <br>
