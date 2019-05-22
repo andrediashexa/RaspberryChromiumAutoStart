@@ -1,5 +1,21 @@
 #!/bin/bash
 
+#Directory of the main script
+script=/bin/chromium-autostart
+
+#Directory of the main script backup
+scriptbackup=/bin/chromium-autostart.tmp
+
+#Directory of autostart of Raspberry
+lxdepi=/home/pi/.config/lxsession/LXDE-pi/autostart
+
+#Directory of autostart of Raspberry backup
+lxdepibackup=/home/pi/.config/lxsession/LXDE-pi/autostart.tmp
+
+
+
+
+
 clear
 
 sleep 2s
@@ -11,44 +27,44 @@ sleep 1s
 
 read dashboard
 
-if [ -f "/bin/chromium-autostart" ]
+if [ -f "$script" ]
 then
-	cat /bin/chromium-autostart
+	cat $script
 	echo
 
-	read -p "The file /bin/chromium-autostart already exists, delete? (Y/N)" -n 1 -r
+	read -p "The file $script already exists, delete? (Y/N)" -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
-		if [ -f "/bin/chromium-autostart.tmp" ]
+		if [ -f "$scriptbackup" ]
 		then
-			rm /bin/chromium-autostart.tmp
+			rm $scriptbackup
 		fi
-    	mv /bin/chromium-autostart /bin/chromium-autostart.tmp
-      echo "File moved to /bin/chromium-autostart.tmp"
+    	mv $script $scriptbackup
+      echo "File moved to $scriptbackup"
 	fi
 
 fi
 
-echo "chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen --app=$dashboard" > /bin/chromium-autostart
-chmod a+x /bin/chromium-autostart
+echo "chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen --app=$dashboard" > $script
+chmod a+x $script
 
 
-if [ -f "/home/pi/.config/lxsession/LXDE-pi/autostart" ]
+if [ -f "$lxdepi" ]
 then
-	cat /home/pi/.config/lxsession/LXDE-pi/autostart
+	cat $lxdepi
 	echo
 
-	read -p "The file /home/pi/.config/lxsession/LXDE-pi/autostart already exists, delete? (Y/N)" -n 1 -r
+	read -p "The file $lxdepi already exists, delete? (Y/N)" -n 1 -r
 	echo
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
-		if [ -f "/home/pi/.config/lxsession/LXDE-pi/autostart.tmp" ]
+		if [ -f "$lxdepibackup" ]
 		then
-			rm /home/pi/.config/lxsession/LXDE-pi/autostart.tmp
+			rm $lxdepibackup
 		fi
-    	mv /home/pi/.config/lxsession/LXDE-pi/autostart /home/pi/.config/lxsession/LXDE-pi/autostart.tmp
-      echo "File moved to /home/pi/.config/lxsession/LXDE-pi/autostart.tmp"
+    	mv $lxdepi $lxdepibackup
+      echo "File moved to $lxdepibackup"
 	fi
 
 fi
@@ -58,22 +74,21 @@ echo "@lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
 @xscreensaver -no-splash
 @point-rpi
-
-chromium-autostart" > /home/pi/.config/lxsession/LXDE-pi/autostart
-chmod a+x /home/pi/.config/lxsession/LXDE-pi/autostart
+chromium-autostart" > $lxdepi
+chmod a+x $lxdepi
 
 
 
 echo "======
-/bin/chromium-autostart
+$script
 ======"
 
-more /bin/chromium-autostart
+more $script
 
 sleep 1s
 
 echo "======
-/home/pi/.config/lxsession/LXDE-pi/autostart
+$lxdepi
 ======"
 
-more /home/pi/.config/lxsession/LXDE-pi/autostart
+more $lxdepi
