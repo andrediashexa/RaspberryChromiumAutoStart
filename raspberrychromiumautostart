@@ -18,9 +18,14 @@ lxdepibackup=/home/pi/.config/lxsession/LXDE-pi/autostart.tmp
 
 clear
 
-sleep 2s
+cat hexa
 
-echo "Digite o link"
+sleep 5s
+
+
+clear
+
+echo "Paste the URL that you want to Chromium auto open"
 
 
 sleep 1s
