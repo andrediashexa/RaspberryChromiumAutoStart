@@ -75,18 +75,19 @@ then
 			rm $lxdepibackup
 		fi
     	mv $lxdepi $lxdepibackup
-      echo "File moved to $lxdepibackup"
+      	echo "File moved to $lxdepibackup"
+	else
+		exit
 	fi
-
-fi
-
-
-echo "@lxpanel --profile LXDE-pi
+else
+	echo "@lxpanel --profile LXDE-pi
 @pcmanfm --desktop --profile LXDE-pi
 @xscreensaver -no-splash
 @point-rpi
 chromium-autostart" > $lxdepi
-chmod a+x $lxdepi
+	chmod a+x $lxdepi
+
+fi
 
 
 
@@ -103,3 +104,7 @@ $lxdepi
 ======"
 
 more $lxdepi
+
+sleep 2s
+
+cat hexa
