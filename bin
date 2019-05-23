@@ -1,0 +1,1 @@
+	chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen --app=$dashboard
