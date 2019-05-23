@@ -41,18 +41,24 @@ then
 	echo
 	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
+		#CHECK IF BACKUP EXIST
 		if [ -f "$scriptbackup" ]
 		then
 			rm $scriptbackup
 		fi
     	mv $script $scriptbackup
-      echo "File moved to $scriptbackup"
+      	echo "File moved to $scriptbackup"
+      	echo "chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen --app=$dashboard" > $script
+	chmod a+x $script
+      	else
+		echo "EXITING SCRIPT..."
+		exit
 	fi
-
+else
+	echo "chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen --app=$dashboard" > $script
+	chmod a+x $script
 fi
 
-echo "chromium-browser --noerordialogs --disable-session-crashed-bubble --start-fullscreen --app=$dashboard" > $script
-chmod a+x $script
 
 
 if [ -f "$lxdepi" ]
