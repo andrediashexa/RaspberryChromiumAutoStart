@@ -14,4 +14,4 @@ The Chromium will open on FullScreen Mode (not KIOSK mode). Use F11 to window it
 
 If you need to change the URL, just run the script again.
 
-For Grafana users, use playlist function.
+For Grafana users, use playlist function to make your life beautiful. =)
