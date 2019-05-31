@@ -25,7 +25,7 @@ sleep 5s
 
 clear
 
-echo "Paste the URL that you want to Chromium auto open"
+echo "Paste the full URL that you want to Chromium auto open. Example: http://hexanetworks.com.br"
 
 
 sleep 1s
